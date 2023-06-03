@@ -1,3 +1,5 @@
+
+
 class Triangulos {
 
     constructor() {
@@ -8,14 +10,12 @@ class Triangulos {
         this.margenX;
         this.margenY;
         this.img;
+  
     }
 
-    cargar() {
-        this.img = loadImage('img/recurso1.png');
-      }
 
-    dibujar() {
-        
+    dibujar() {  
+
         translate(-width/2, -height/2);
 
         this.columnas = 5;
@@ -57,24 +57,38 @@ class Triangulos {
             y3 = y3 + n3 * sin(radians(a3));
             y4 = y4 + n4 * sin(radians(a4));
 
-            push();
-      
-            strokeWeight(5);
+    
+            strokeWeight(1);
 
-            triangle(x1, y1, x2, y2, x3, y3);
-            triangle(x3, y3, x2, y2, x4, y4);
-
-            pop();
+            
+            triangle(x1, y1, x2, y2, x4, y4);
+            triangle(x3, y3, x4, y4, x1, y1);
+            
      }
 
    }
   }
 
   textura(x) {
+     translate(width/2-50,height/2-50);
+     //Crear Grafico
+     let g = new Grafico();
+          
+     //Dibujar grafico
+     
+  
+     
+
+      
     if (x < width / 2) {
-      fill(118,167,54);
-    } else {
-      texture(this.img);
+      
+      fill(255,167,54);
+      } 
+    if(x>width/2) {
+      g.dibujarcirculos(mouseY);  
+        texture(g);
+      noFill();
+      
     }
   }
 }
